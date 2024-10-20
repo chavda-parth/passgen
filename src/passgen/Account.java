@@ -1,6 +1,8 @@
 package passgen;
 
-public class Password {
+import java.util.Random;
+
+public class Account {
     private String accountName;
     private String credential;
     private int minimumPasswordLength;
@@ -9,8 +11,9 @@ public class Password {
     private int minimumLowerCaseLettersRequired;
     private int minimumSpecialCharactersRequired;
     private String passwordString;
+    private PasswordStrengthVerifier verifier;
 
-    Password(String accountName, String credential, int minimumPasswordLength, int minimumDigitsRequired, int minimumUppercaseLettersRequired, int minimumLowerCaseLettersRequired, int minimumSpecialCharactersRequired) {
+    Account(String accountName, String credential, int minimumPasswordLength, int minimumDigitsRequired, int minimumUppercaseLettersRequired, int minimumLowerCaseLettersRequired, int minimumSpecialCharactersRequired) {
         this.accountName = accountName;
         this.credential = credential;
         this.minimumPasswordLength = minimumPasswordLength;
@@ -19,6 +22,7 @@ public class Password {
         this.minimumLowerCaseLettersRequired = minimumLowerCaseLettersRequired;
         this.minimumSpecialCharactersRequired = minimumSpecialCharactersRequired;
         this.passwordString = "";
+        this.verifier = new PasswordStrengthVerifier(minimumPasswordLength);
     }
 
     public String getAccountName() {
@@ -87,5 +91,23 @@ public class Password {
     @Override
     public String toString() {
         return accountName + ", " + credential + ", " + minimumPasswordLength + ", " + minimumDigitsRequired + ", " + minimumUppercaseLettersRequired + ", " + minimumLowerCaseLettersRequired + ", " + minimumSpecialCharactersRequired;
+    }
+
+    void createPassword() {
+        int[] passwordChars = new int[this.minimumPasswordLength];
+        Random random = new Random();
+        int currentChar;
+
+        for (int i = 0; i < this.minimumPasswordLength; i++) {
+            currentChar = 0;
+
+            while (currentChar < 33 ) {
+                currentChar = random.nextInt(126);
+            }
+
+            passwordChars[i] = currentChar;
+
+            passwordChars = verifier.verifyStrength(passwordChars, minimumDigitsRequired, minimumUppercaseLettersRequired, minimumLowerCaseLettersRequired, minimumSpecialCharactersRequired);
+        }
     }
 }

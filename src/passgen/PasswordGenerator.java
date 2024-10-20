@@ -1,17 +1,17 @@
 package passgen;
-
 import java.util.Scanner;
 
 public class PasswordGenerator {
     Scanner scanner = new Scanner(System.in);
-    Password password;
+    Account acc;
 
     public void generate() {
         System.out.println("WELCOME TO GLITCH'S PASSWORD GENERATOR");
         System.out.println("LETS GET YOU A NEW PASSWORD");
 
-        password = new Password("Google", "chavdaparth480@gmail.com", 8, 1, 1, 1, 1);
+        acc = new Account("Google", "chavdaparth480@gmail.com", 8, 1, 1, 1, 1);
 
-        System.out.println(password.toString());
+        System.out.println(acc.toString());
+        
     }
 }
