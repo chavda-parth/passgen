@@ -93,7 +93,7 @@ public class Account {
         return accountName + ", " + credential + ", " + minimumPasswordLength + ", " + minimumDigitsRequired + ", " + minimumUppercaseLettersRequired + ", " + minimumLowerCaseLettersRequired + ", " + minimumSpecialCharactersRequired;
     }
 
-    void createPassword() {
+    int[] createPassword() {
         int[] passwordChars = new int[this.minimumPasswordLength];
         Random random = new Random();
         int currentChar;
@@ -107,7 +107,9 @@ public class Account {
 
             passwordChars[i] = currentChar;
 
-            passwordChars = verifier.verifyStrength(passwordChars, minimumDigitsRequired, minimumUppercaseLettersRequired, minimumLowerCaseLettersRequired, minimumSpecialCharactersRequired);
+            //passwordChars = this.verifier.verifyStrength(passwordChars, minimumDigitsRequired, minimumUppercaseLettersRequired, minimumLowerCaseLettersRequired, minimumSpecialCharactersRequired);
         }
+
+        return passwordChars;
     }
 }
