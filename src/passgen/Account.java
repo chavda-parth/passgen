@@ -106,9 +106,9 @@ public class Account {
             }
 
             passwordChars[i] = currentChar;
-
-            //passwordChars = this.verifier.verifyStrength(passwordChars, minimumDigitsRequired, minimumUppercaseLettersRequired, minimumLowerCaseLettersRequired, minimumSpecialCharactersRequired);
         }
+
+        passwordChars = this.verifier.verifyStrength(passwordChars, minimumDigitsRequired, minimumUppercaseLettersRequired, minimumLowerCaseLettersRequired, minimumSpecialCharactersRequired);
 
         return passwordChars;
     }
