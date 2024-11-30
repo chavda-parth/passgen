@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Account {
     private String accountName;
-    private String credential;
+    private String email;
     private int minimumPasswordLength;
     private int minimumDigitsRequired;
     private int minimumUppercaseLettersRequired;
@@ -13,9 +13,9 @@ public class Account {
     private String passwordString;
     private PasswordStrengthVerifier verifier;
 
-    Account(String accountName, String credential, int minimumPasswordLength, int minimumDigitsRequired, int minimumUppercaseLettersRequired, int minimumLowerCaseLettersRequired, int minimumSpecialCharactersRequired) {
+    Account(String accountName, String email, int minimumPasswordLength, int minimumDigitsRequired, int minimumUppercaseLettersRequired, int minimumLowerCaseLettersRequired, int minimumSpecialCharactersRequired) {
         this.accountName = accountName;
-        this.credential = credential;
+        this.email = email;
         this.minimumPasswordLength = minimumPasswordLength;
         this.minimumDigitsRequired = minimumDigitsRequired;
         this.minimumUppercaseLettersRequired = minimumUppercaseLettersRequired;
@@ -33,12 +33,12 @@ public class Account {
         this.accountName = accountName;
     }
 
-    public String getCredential() {
-        return credential;
+    public String getemail() {
+        return email;
     }
 
-    public void setCredential(String credential) {
-        this.credential = credential;
+    public void setemail(String email) {
+        this.email = email;
     }
 
     public int getMinimumPasswordLength() {
@@ -90,7 +90,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return accountName + ", " + credential + ", " + minimumPasswordLength + ", " + minimumDigitsRequired + ", " + minimumUppercaseLettersRequired + ", " + minimumLowerCaseLettersRequired + ", " + minimumSpecialCharactersRequired;
+        return "Account Information:\nAcount Name: " + accountName + "\nEmail: " + email;
     }
 
     int[] createPassword() {
