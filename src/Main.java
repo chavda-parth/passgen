@@ -5,7 +5,5 @@ public class Main {
         PasswordGenerator passgen = new PasswordGenerator();
 
         passgen.generate();
-
-        System.exit(0);
     }
 }
