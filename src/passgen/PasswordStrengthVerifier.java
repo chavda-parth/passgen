@@ -2,6 +2,10 @@ package passgen;
 
 import java.util.Random;
 
+
+/**
+ * Ensures password adheres to constraints and verifies strength.
+ */
 public class PasswordStrengthVerifier {
     private int passwordLength;
     private int digitsCounter;
@@ -16,30 +20,36 @@ public class PasswordStrengthVerifier {
         this.passwordLength = passwordLength;
     }
 
+    /**
+     * Verifies password strength. 
+     */
     int[] verifyStrength(int[] passwordChars, int minimumDigits, int minimumUppercaseLetters, int minimumLowercaseLetters, int minimumSpecialCharacters) {
         setCounters(passwordChars);
 
         while (digitsCounter < minimumDigits || uppercaseLettersCounter < minimumUppercaseLetters || lowercaseLettersCounter < minimumLowercaseLetters || specialCharactersCounter < minimumSpecialCharacters) {
             if (digitsCounter < minimumDigits) {
-                updatePassword(passwordChars, 48, 57);
+                updatePassword(passwordChars, Constants.ASCII_DIGIT_START, Constants.ASCII_DIGIT_END);
             }
 
             if (uppercaseLettersCounter < minimumUppercaseLetters) {
-                updatePassword(passwordChars, 65, 90);
+                updatePassword(passwordChars, Constants.ASCII_UPPERCASE_START, Constants.ASCII_UPPERCASE_END);
             }
 
             if (lowercaseLettersCounter < minimumLowercaseLetters) {
-                updatePassword(passwordChars, 97, 122);
+                updatePassword(passwordChars, Constants.ASCII_LOWERCASE_START, Constants.ASCII_LOWERCASE_END);
             }
 
             if (specialCharactersCounter < minimumSpecialCharacters) {
-                updatePassword(passwordChars, 33, 47);
+                updatePassword(passwordChars, Constants.ASCII_CHARS_START, Constants.ASCII_DIGIT_START - 1);
             }
         }
 
         return passwordChars;
     }
 
+    /**
+     * Sets constraint counters for password.
+     */
     void setCounters(int[] passwordChars) {
         digitsCounter = 0;
         uppercaseLettersCounter = 0;
@@ -59,6 +69,9 @@ public class PasswordStrengthVerifier {
         }
     }
 
+    /**
+     * Updates password to meet strength and constraint requirements.
+     */
     void updatePassword(int[] passwordChars, int lowerBound, int upperBound) {
         randomIndex = random.nextInt(this.passwordLength);
         randomNumber = 0;
