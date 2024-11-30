@@ -35,16 +35,9 @@ public class PasswordGenerator {
 
         acc = new Account(accountName, email, minimumPasswordLength, minimumDigits, minimumUppercaseLetters, minimumLowercaseLetters, minimumSpecialCharacters);
 
+        acc.createPassword();
+
         System.out.println(acc.toString());
-
-        String password = "";
-        int[] codes = acc.createPassword();
-
-        for (int code : codes) {
-            password = password + ((char) code);
-        }
-
-        System.out.println("Password: " + password);
 
         scanner.close();
     }

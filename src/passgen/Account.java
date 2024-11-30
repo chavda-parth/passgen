@@ -10,7 +10,7 @@ public class Account {
     private int minimumUppercaseLettersRequired;
     private int minimumLowerCaseLettersRequired;
     private int minimumSpecialCharactersRequired;
-    private String passwordString;
+    private StringBuilder passwordString;
     private PasswordStrengthVerifier verifier;
 
     Account(String accountName, String email, int minimumPasswordLength, int minimumDigitsRequired, int minimumUppercaseLettersRequired, int minimumLowerCaseLettersRequired, int minimumSpecialCharactersRequired) {
@@ -21,7 +21,7 @@ public class Account {
         this.minimumUppercaseLettersRequired = minimumUppercaseLettersRequired;
         this.minimumLowerCaseLettersRequired = minimumLowerCaseLettersRequired;
         this.minimumSpecialCharactersRequired = minimumSpecialCharactersRequired;
-        this.passwordString = "";
+        this.passwordString = new StringBuilder(minimumPasswordLength);
         this.verifier = new PasswordStrengthVerifier(minimumPasswordLength);
     }
 
@@ -80,20 +80,20 @@ public class Account {
         this.minimumSpecialCharactersRequired = minimumSpecialCharactersRequired;
     }
 
-    public String getPasswordString() {
+    public StringBuilder getPasswordString() {
         return passwordString;
     }
 
-    public void setPasswordString(String passwordString) {
+    public void setPasswordString(StringBuilder passwordString) {
         this.passwordString = passwordString;
     }
 
     @Override
     public String toString() {
-        return "Account Information:\nAcount Name: " + accountName + "\nEmail: " + email;
+        return "Account Information:\nAcount Name: " + accountName + "\nEmail: " + email + "\nPassword: " + passwordString;
     }
 
-    int[] createPassword() {
+    void createPassword() {
         int[] passwordChars = new int[this.minimumPasswordLength];
         Random random = new Random();
         int currentChar;
@@ -110,6 +110,8 @@ public class Account {
 
         passwordChars = this.verifier.verifyStrength(passwordChars, minimumDigitsRequired, minimumUppercaseLettersRequired, minimumLowerCaseLettersRequired, minimumSpecialCharactersRequired);
 
-        return passwordChars;
+        for (int charCode : passwordChars) {
+            passwordString.append((char) charCode);
+        }
     }
 }
