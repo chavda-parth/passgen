@@ -1,0 +1,9 @@
+### Java ###
+# Compiled class file
+*.class
+
+#Project folders
+.bin/
+
+#IDE Specific files and folders
+.vscode/
