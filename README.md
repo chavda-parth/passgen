@@ -5,9 +5,9 @@
 
 ## Description 
 
-A Java-based password generator built as a hobby project. The aim is to build strong, customizable password for user accounts. The program takes user inputs to save account information for reference and sets password constraints such as minimum password length and specific character requirements (digits, uppercase, lowercase, special characters) through which a suitable password is generated. It ensures that the generated password meets the security criteria.
+A Java-based password generator built as a hobby project. The aim is to build a strong, customizable password for user accounts. The program takes user inputs to save account information for reference and sets password constraints such as minimum password length and specific character requirements (digits, uppercase, lowercase, special characters) through which a suitable password is generated. It ensures that the generated password meets the security criteria.
 
-(The project is still in prototype phase and is a ready product nor is it meant to be.)
+(The project is still in prototype phase and is not a ready product nor is it meant to be.)
 
 ## Table of Contents
 
@@ -30,7 +30,7 @@ A Java-based password generator built as a hobby project. The aim is to build st
     - Minimum number of uppercase letters
     - Minimum number of lowercase letters
     - Minimum number of special characters
-- Validates and ensures that password meets contraints.
+- Validates and ensures that password meets constraints.
 - Clean and modular design based on Object Oriented Programming Principles
 - Console-based Interface (Temporary)
 
