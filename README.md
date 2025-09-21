@@ -110,6 +110,5 @@ src/
 
 For questions or suggestions, feel free to reach out:
 - Name: Parth Chavda
-- Email: chavdaparth480@gmail.com
-- Alternate Email: chavdaparth6511@gmail.com
+- Email: chavdaparth9603@gmail.com
 - LinkedIn: https://www.linkedin.com/in/chavda-parth/
